@@ -1,0 +1,914 @@
+Chronologic VCS (TM)
+       Version X-2025.06-SP1_Full64 -- Fri May 15 01:19:45 2026
+
+                    Copyright (c) 1991 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'design.sv'
+Parsing design file 'testbench.sv'
+Parsing included file 'transaction.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'interface.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'generator.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'driver.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'monitor.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'scoreboard.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'environment.sv'.
+Back to file 'testbench.sv'.
+Top Level Modules:
+       testbench
+TimeScale is 1 ns / 1 ns
+
+Warning-[INTFDV] VCD dumping of interface/program/package
+testbench.sv, 22
+  Selective VCD dumping of interface 'dff_itf' is not supported.  Selective 
+  VCD dumping for interfaces, packages and programs is not supported.
+  Use full VCD dumping '$dumpvars(0)', or use VPD or FSDB dumping, recompile 
+  with '-debug_access'.
+
+Starting vcs inline pass...
+4 modules and 0 UDP read.
+recompiling package vcs_paramclassrepository
+recompiling module dff
+recompiling module dff_itf
+recompiling module testbench
+All of 4 modules done
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib -L/apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib  -Wl,-rpath-link=./   objs/amcQw_d.o  _286_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs      -lvcsnew -ldistsimclient -lsimprofile -luclinative /apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+CPU time: .740 seconds to compile + .811 seconds to elab + .428 seconds to link
+Chronologic VCS simulator copyright 1991-2025
+Contains Synopsys proprietary information.
+Compiler version X-2025.06-SP1_Full64; Runtime version X-2025.06-SP1_Full64;  May 15 01:19 2026
+===========================================================================
+                      VERIFICATION DFF IN SV                           
+===========================================================================
+          Time=[5] DRIVER:  d=0
+[time=6] MONITOR: rst=0 d=0 q=0 
+          Time=[6] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[15] DRIVER:  d=1
+[time=16] MONITOR: rst=0 d=0 q=0 
+          Time=[16] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[25] DRIVER:  d=0
+[time=26] MONITOR: rst=0 d=1 q=0 
+          Time=[26] SCOREBOARD: rst=0 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  FAIL  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[35] DRIVER:  d=1
+[time=36] MONITOR: rst=0 d=0 q=0 
+          Time=[36] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=44] MONITOR: rst=1 d=1 q=0 
+          Time=[44] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[45] DRIVER:  d=0
+[time=46] MONITOR: rst=1 d=1 q=0 
+          Time=[46] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[55] DRIVER:  d=1
+[time=56] MONITOR: rst=0 d=0 q=0 
+          Time=[56] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=60] MONITOR: rst=1 d=1 q=0 
+          Time=[60] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[65] DRIVER:  d=1
+[time=66] MONITOR: rst=0 d=1 q=1 
+          Time=[66] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[75] DRIVER:  d=0
+[time=76] MONITOR: rst=0 d=1 q=1 
+          Time=[76] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[85] DRIVER:  d=0
+[time=86] MONITOR: rst=0 d=0 q=0 
+          Time=[86] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[95] DRIVER:  d=0
+[time=96] MONITOR: rst=0 d=0 q=0 
+          Time=[96] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=102] MONITOR: rst=1 d=0 q=0 
+          Time=[102] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[105] DRIVER:  d=0
+[time=106] MONITOR: rst=1 d=0 q=0 
+          Time=[106] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[115] DRIVER:  d=0
+[time=116] MONITOR: rst=0 d=0 q=0 
+          Time=[116] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=122] MONITOR: rst=1 d=0 q=0 
+          Time=[122] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[125] DRIVER:  d=1
+[time=126] MONITOR: rst=1 d=0 q=0 
+          Time=[126] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[135] DRIVER:  d=0
+[time=136] MONITOR: rst=0 d=1 q=1 
+          Time=[136] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[145] DRIVER:  d=1
+[time=146] MONITOR: rst=0 d=0 q=0 
+          Time=[146] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[155] DRIVER:  d=1
+[time=156] MONITOR: rst=0 d=1 q=1 
+          Time=[156] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=159] MONITOR: rst=1 d=1 q=0 
+          Time=[159] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[165] DRIVER:  d=0
+[time=166] MONITOR: rst=0 d=1 q=1 
+          Time=[166] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[175] DRIVER:  d=1
+[time=176] MONITOR: rst=0 d=0 q=0 
+          Time=[176] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=182] MONITOR: rst=1 d=1 q=0 
+          Time=[182] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[185] DRIVER:  d=1
+[time=186] MONITOR: rst=0 d=1 q=1 
+          Time=[186] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[195] DRIVER:  d=0
+[time=196] MONITOR: rst=0 d=1 q=1 
+          Time=[196] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=198] MONITOR: rst=1 d=0 q=0 
+          Time=[198] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[205] DRIVER:  d=0
+[time=206] MONITOR: rst=0 d=0 q=0 
+          Time=[206] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=212] MONITOR: rst=1 d=0 q=0 
+          Time=[212] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[215] DRIVER:  d=0
+[time=216] MONITOR: rst=1 d=0 q=0 
+          Time=[216] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[225] DRIVER:  d=0
+[time=226] MONITOR: rst=0 d=0 q=0 
+          Time=[226] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[235] DRIVER:  d=0
+[time=236] MONITOR: rst=0 d=0 q=0 
+          Time=[236] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[245] DRIVER:  d=1
+[time=246] MONITOR: rst=0 d=0 q=0 
+          Time=[246] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=249] MONITOR: rst=1 d=1 q=0 
+          Time=[249] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[255] DRIVER:  d=1
+[time=256] MONITOR: rst=0 d=1 q=1 
+          Time=[256] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[265] DRIVER:  d=1
+[time=266] MONITOR: rst=0 d=1 q=1 
+          Time=[266] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=273] MONITOR: rst=1 d=1 q=0 
+          Time=[273] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[275] DRIVER:  d=0
+[time=276] MONITOR: rst=1 d=1 q=0 
+          Time=[276] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[285] DRIVER:  d=1
+[time=286] MONITOR: rst=0 d=0 q=0 
+          Time=[286] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[295] DRIVER:  d=1
+[time=296] MONITOR: rst=0 d=1 q=1 
+          Time=[296] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=305] MONITOR: rst=1 d=1 q=0 
+          Time=[305] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[305] DRIVER:  d=1
+          Time=[315] DRIVER:  d=1
+[time=316] MONITOR: rst=0 d=1 q=1 
+          Time=[316] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[325] DRIVER:  d=0
+[time=326] MONITOR: rst=0 d=1 q=1 
+          Time=[326] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=327] MONITOR: rst=1 d=0 q=0 
+          Time=[327] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[335] DRIVER:  d=0
+[time=336] MONITOR: rst=0 d=0 q=0 
+          Time=[336] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[345] DRIVER:  d=0
+[time=346] MONITOR: rst=0 d=0 q=0 
+          Time=[346] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[355] DRIVER:  d=1
+[time=356] MONITOR: rst=0 d=0 q=0 
+          Time=[356] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[365] DRIVER:  d=0
+[time=366] MONITOR: rst=0 d=1 q=1 
+          Time=[366] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[375] DRIVER:  d=0
+[time=376] MONITOR: rst=0 d=0 q=0 
+          Time=[376] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=382] MONITOR: rst=1 d=0 q=0 
+          Time=[382] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[385] DRIVER:  d=0
+[time=386] MONITOR: rst=0 d=0 q=0 
+          Time=[386] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[395] DRIVER:  d=1
+[time=396] MONITOR: rst=0 d=0 q=0 
+          Time=[396] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[405] DRIVER:  d=0
+[time=406] MONITOR: rst=0 d=1 q=1 
+          Time=[406] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=414] MONITOR: rst=1 d=0 q=0 
+          Time=[414] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[415] DRIVER:  d=0
+[time=416] MONITOR: rst=1 d=0 q=0 
+          Time=[416] SCOREBOARD: rst=1 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[425] DRIVER:  d=1
+[time=426] MONITOR: rst=0 d=0 q=0 
+          Time=[426] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[435] DRIVER:  d=1
+[time=436] MONITOR: rst=0 d=1 q=1 
+          Time=[436] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=441] MONITOR: rst=1 d=1 q=0 
+          Time=[441] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[445] DRIVER:  d=1
+[time=446] MONITOR: rst=0 d=1 q=1 
+          Time=[446] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[455] DRIVER:  d=1
+[time=456] MONITOR: rst=0 d=1 q=1 
+          Time=[456] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=459] MONITOR: rst=1 d=1 q=0 
+          Time=[459] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[465] DRIVER:  d=1
+[time=466] MONITOR: rst=0 d=1 q=1 
+          Time=[466] SCOREBOARD: rst=0 d=1,q=1
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=1    |
+          |  expected_q=1   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+[time=474] MONITOR: rst=1 d=1 q=0 
+          Time=[474] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[475] DRIVER:  d=0
+[time=476] MONITOR: rst=1 d=1 q=0 
+          Time=[476] SCOREBOARD: rst=1 d=1,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[485] DRIVER:  d=0
+[time=486] MONITOR: rst=0 d=0 q=0 
+          Time=[486] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+          Time=[495] DRIVER:  d=0
+[time=496] MONITOR: rst=0 d=0 q=0 
+          Time=[496] SCOREBOARD: rst=0 d=0,q=0
+          +-----------------+
+          |   SCOREBOARD    |
+          +-----------------+
+          |   actual_q=0    |
+          |  expected_q=0   |
+          |   +--------+    |
+          |   |  PASS  |    |
+          |   +--------+    |
+          +-----------------+
+=========================================================================
+$finish called from file "testbench.sv", line 28.
+$finish at simulation time                  500
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 500 ns
+CPU Time:      0.620 seconds;       Data structure size:   0.0Mb
+Fri May 15 09:15:48 2026
+Finding VCD file...
+./v.vcd
