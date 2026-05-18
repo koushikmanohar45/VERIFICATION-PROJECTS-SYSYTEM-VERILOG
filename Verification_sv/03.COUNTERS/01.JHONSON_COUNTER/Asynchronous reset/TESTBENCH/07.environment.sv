@@ -11,8 +11,6 @@ class environment;
   virtual jc_itf.drive vif;
   virtual jc_itf.mon vif1;
   
-  
-
   function new(virtual jc_itf.drive vif,virtual jc_itf.mon vif1);
 
     this.vif = vif;
