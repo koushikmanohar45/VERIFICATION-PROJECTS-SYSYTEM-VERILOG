@@ -13,11 +13,12 @@ class r_generator;
   
   task g_gn();
     begin
+      
       //write only
       repeat(8)begin
         t=new();
         t.count=0;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -27,7 +28,7 @@ class r_generator;
       repeat(40)begin
         t=new();
         t.count=1;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -36,7 +37,7 @@ class r_generator;
       repeat(2)begin
         t=new();
         t.count=2;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -45,7 +46,7 @@ class r_generator;
       repeat(20)begin
         t=new();
         t.count=3;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -54,7 +55,7 @@ class r_generator;
       repeat(100)begin
         t=new();
         t.count=4;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -63,7 +64,7 @@ class r_generator;
       repeat(4)begin
         t=new();
         t.count=5;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
