@@ -1,11 +1,13 @@
-class r_transaction #(parameter width=8);
+class r_transaction #(parameter width=8, depth=16);
   
 
   rand bit r_en;
   bit r_rst;
   bit[width-1:0] data_out;
   bit empty;
+  bit [$clog2(depth):0]r_ptr;
   int count;
+
   
   constraint c1{
                 if(count==0)
