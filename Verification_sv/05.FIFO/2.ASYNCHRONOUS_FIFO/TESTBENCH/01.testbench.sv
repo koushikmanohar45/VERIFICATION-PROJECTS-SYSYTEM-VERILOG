@@ -8,6 +8,7 @@
 `include "r_driver.sv"
 `include "r_monitor.sv"
 `include "scoreboard.sv"
+`include "coverage.sv"
 `include "environment.sv"
 
 
@@ -23,7 +24,7 @@ module testbench #(parameter depth=16,width=8);
   
     
   fifo itf(r_clk,w_clk);
-  asynchronus_fifo #(.width(width),.depth(depth))dut(.w_clk(w_clk),.r_clk(r_clk),.w_rst(itf.w_rst),.r_rst(itf.r_rst),.data_in(itf.data_in),.r_en(itf.r_en),.w_en(itf.w_en),.data_out(itf.data_out),.full(itf.full),.empty(itf.empty));
+  asynchronus_fifo #(.width(width),.depth(depth))dut(.w_clk(w_clk),.r_clk(r_clk),.w_rst(itf.w_rst),.r_rst(itf.r_rst),.data_in(itf.data_in),.r_en(itf.r_en),.w_en(itf.w_en),.data_out(itf.data_out),.full(itf.full),.empty(itf.empty),.b_wptr(itf.w_ptr),.b_rptr(itf.r_ptr));
   
   environment e;
  
@@ -41,4 +42,3 @@ module testbench #(parameter depth=16,width=8);
    end
   
 endmodule
-
