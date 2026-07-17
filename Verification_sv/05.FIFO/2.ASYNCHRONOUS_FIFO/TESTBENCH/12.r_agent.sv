@@ -2,6 +2,7 @@ class r_agent;
   
   mailbox #(r_transaction) r_gen_dri;
   mailbox #(r_transaction) r_mon_scb;
+  mailbox #(r_transaction) r_mon_cov;
   
    r_generator g;
    r_driver d;
@@ -12,9 +13,10 @@ class r_agent;
   virtual fifo.r_dr vif;
   virtual fifo.r_mtr vif1;
   
-  function new(mailbox #(r_transaction) r_mon_scb,virtual fifo.r_dr vif,virtual fifo.r_mtr vif1);
+  function new(mailbox #(r_transaction) r_mon_scb,mailbox #(r_transaction) r_mon_cov,virtual fifo.r_dr vif,virtual fifo.r_mtr vif1);
     
     this.r_mon_scb=r_mon_scb;
+    this.r_mon_cov=r_mon_cov;
     this.vif=vif;
     this.vif1=vif1;
 
@@ -22,7 +24,7 @@ class r_agent;
     
     g=new(r_gen_dri,done);
     d=new(r_gen_dri,vif,done);
-    m=new(r_mon_scb,vif1);
+    m=new(r_mon_scb,r_mon_cov,vif1);
     
   endfunction
   
