@@ -21,6 +21,7 @@ class r_driver;
         @(vif.r_cb_drv);
         
           vif.r_cb_drv.r_en<=t.r_en;
+         // vif.r_rst<=t.r_rst;
         $display("[time=%0t] DRIVER[READ]  : r_reset=%b | read_enable=%b  ",$time, t.r_rst,t.r_en);
         ->done;
       end
