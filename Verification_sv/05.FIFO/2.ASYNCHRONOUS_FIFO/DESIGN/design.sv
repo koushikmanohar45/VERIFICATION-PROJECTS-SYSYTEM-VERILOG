@@ -5,10 +5,10 @@ module asynchronus_fifo #(parameter depth=16,width=8)
     input w_rst,r_rst,
     input w_en,r_en,
     output [width-1:0] data_out,
-    output full,empty
+    output full,empty,
+    output [$clog2(depth):0] b_wptr,b_rptr
   );
   localparam addr=$clog2(depth);
-  wire [addr:0]b_wptr,b_rptr;
   wire [addr:0]g_wptr,g_rptr;
   wire [addr:0]g_wptr_nxt,g_rptr_nxt;
   wire [addr:0]g_wptr_sync,g_rptr_sync; 
