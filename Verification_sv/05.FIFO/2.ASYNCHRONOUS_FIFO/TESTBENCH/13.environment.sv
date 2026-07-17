@@ -1,10 +1,13 @@
 `include "w_agent.sv"
 `include "r_agent.sv"
 
+
 class environment;
   
   mailbox #(w_transaction) w_mon_scb;
   mailbox #(r_transaction) r_mon_scb;
+  mailbox #(w_transaction) w_mon_cov;
+  mailbox #(r_transaction) r_mon_cov;
   
   virtual fifo.w_dr vif;
   virtual fifo.w_mtr vif1;
@@ -15,6 +18,7 @@ class environment;
   w_agent a1;
   r_agent a2;
   scoreboard s;
+  coverage c;
 
   
   real per;
@@ -28,10 +32,13 @@ class environment;
     
     w_mon_scb=new();
     r_mon_scb=new();
+    w_mon_cov=new();
+    r_mon_cov=new();
     
-    a1=new(w_mon_scb,vif,vif1);
-    a2=new(r_mon_scb,vif2,vif3);
+    a1=new(w_mon_scb,w_mon_cov,vif,vif1);
+    a2=new(r_mon_scb,r_mon_cov,vif2,vif3);
     s=new(w_mon_scb,r_mon_scb);
+    c=new(w_mon_cov,r_mon_cov);
     
   endfunction
   
@@ -41,6 +48,7 @@ class environment;
           a1.a1_run();
           a2.a2_run();
           s.s_run();
+          c.run();
         join_none
           #1800;
           per=(s.pass/s.total)*100;
@@ -52,8 +60,9 @@ class environment;
           $display("#     SUCCESS RATE=%0f                       #",per);
           $display("#####################################################");
           #1;
-          $finish;
+          $stop;
     end
   endtask
   
 endclass
+
