@@ -11,6 +11,7 @@ class scoreboard #(parameter depth=32);
     this.from_w_monitor=from_w_monitor;
     this.from_r_monitor=from_r_monitor;
   endfunction
+
   
   bit [7:0] ref_q[$];
   bit [7:0] expected,prev_expected;
