@@ -1,10 +1,11 @@
 
-class w_transaction #(parameter width=8);
+class w_transaction #(parameter width=8,depth=16);
   
   rand bit[width-1:0] data_in;
   rand bit w_en;
   bit w_rst;
   bit full; 
+  bit [$clog2(depth):0]w_ptr;
   int count;
   
   constraint c1{
