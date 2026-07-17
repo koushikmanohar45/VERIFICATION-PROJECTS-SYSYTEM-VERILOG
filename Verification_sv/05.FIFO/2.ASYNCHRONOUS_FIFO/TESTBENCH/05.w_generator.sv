@@ -21,7 +21,7 @@ class w_generator;
       repeat(4)begin
         t=new();
         t.count=0;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -37,7 +37,7 @@ class w_generator;
       repeat(20)begin
         t=new();
         t.count=1;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -52,7 +52,7 @@ class w_generator;
       repeat(1)begin
         t=new();
         t.count=2;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -67,7 +67,7 @@ class w_generator;
       repeat(10)begin
         t=new();
         t.count=3;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -82,7 +82,7 @@ class w_generator;
       repeat(50)begin
         t=new();
         t.count=4;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
@@ -97,7 +97,7 @@ class w_generator;
       repeat(4)begin
         t=new();
         t.count=5;
-        t.randomize();
+        assert(t.randomize());
         to_driver.put(t);
         @(done);
       end
