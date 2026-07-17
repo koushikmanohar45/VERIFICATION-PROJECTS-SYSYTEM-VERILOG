@@ -1,0 +1,1942 @@
+QuestaSim-64 qrun 2025.2 Utility 2025.05 May 31 2025
+Start time: 05:15:14 on Jul 17,2026
+qrun -batch -access=rw+/. -timescale 1ns/1ns -coverage -mfcu design.sv testbench.sv -coverage -voptargs=""+acc"" -do "run.do" 
+** Note: (qrun-220) 'modelsim.ini' is used as the ini file.
+Creating library 'qrun.out/work'.
+QuestaSim-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 05:15:14 on Jul 17,2026
+vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -csession=incr 
+** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+-- Compiling module asynchronus_fifo
+-- Compiling module fifo_memory
+-- Compiling module rptr_handler
+-- Compiling module synchronizer_2ff
+-- Compiling module wptr_handler
+-- Compiling package design_sv_unit
+** Warning: coverage.sv(98): (vlog-2727) One of implicit coverpoints at line '98' is a duplicate of the explicitly declared coverpoint 'ren' at line '71'. The coverage score may be skewed as a result.
+-- Compiling interface fifo
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+End time: 05:15:14 on Jul 17,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 1
+QuestaSim-64 vopt 2025.2 Compiler 2025.05 May 31 2025
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 05:15:14 on Jul 17,2026
+vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc" -findtoplevels qrun.out/work+2+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=3 
+** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
+
+Top level modules:
+	testbench
+
+Analyzing design...
+-- Loading module testbench
+-- Loading interface fifo
+-- Loading module asynchronus_fifo
+-- Loading module synchronizer_2ff
+-- Loading module wptr_handler
+-- Loading module rptr_handler
+-- Loading module fifo_memory
+Optimizing 9 design-units (inlining 0/8 module instances):
+-- Optimizing package design_sv_unit(fast)
+** Warning: coverage.sv(98): (vopt-2727) One of implicit coverpoints at line '98' is a duplicate of the explicitly declared coverpoint 'ren' at line '71'. The coverage score may be skewed as a result.
+-- Optimizing interface fifo(fast__2)
+-- Optimizing module asynchronus_fifo(fast)
+-- Optimizing module testbench(fast)
+-- Optimizing module fifo_memory(fast)
+-- Optimizing module wptr_handler(fast)
+-- Optimizing module rptr_handler(fast)
+-- Optimizing module synchronizer_2ff(fast)
+-- Optimizing interface fifo(fast)
+Optimized design name is qrun_opt
+End time: 05:15:15 on Jul 17,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 2
+# ** Note: (vsim-220) 'modelsim.ini' is used as the ini file.
+# vsim -batch -lib qrun.out/work -do "coverage save -onexit cov_$Sv_Seed.ucdb" -do "run.do" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 05:15:15 on Jul 17,2026
+# //  Questa Sim-64
+# //  Version 2025.2 linux_x86_64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.design_sv_unit(fast)
+# Loading work.testbench(fast)
+# Loading work.fifo(fast__2)
+# Loading work.asynchronus_fifo(fast)
+# Loading work.synchronizer_2ff(fast)
+# Loading work.wptr_handler(fast)
+# Loading work.rptr_handler(fast)
+# Loading work.fifo_memory(fast)
+# Loading work.fifo(fast)
+# 
+# coverage save -onexit cov_$Sv_Seed.ucdb
+# do run.do
+# =====================================================================================
+#                      ASYNCHRONOUS FIFO VERIFICATION IN SV                   
+# =====================================================================================
+# =======================
+#        write only
+# =======================
+# [time=15] MONITOR[READ] : r_reset=1 | read_enable=0  | data_out=  0 |empty=1 
+# [time=20] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=20] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =150 | 
+# [time=25] MONITOR[READ] : r_reset=1 | read_enable=0  | data_out=  0 |empty=1 
+# [time=30] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=30] MONITOR[WRITE]: w_reset=1 | write_enable=1 | data_in=150 |full=0 
+# | coverage_w=14.29%       |
+# | coverage_R=26.92%      |
+# [time=35] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=1 
+# [time=40] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=40] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =247 | 
+# [time=45] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=1 
+# [time=50] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=50] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=247 |full=0 
+# [time=50] SCOREBOARD write operation sucessful! ------------------------------------------------->size=1 q='{247}
+#                       +------------------+-------------------+
+# [time=50] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=1  |
+#                       +------------------+-------------------+
+# | coverage_w=26.19%       |
+# | coverage_R=26.92%      |
+# [time=55] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=1 
+# [time=60] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=60] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =247 | 
+# [time=65] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=1 
+# [time=70] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=70] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=247 |full=0 
+# [time=70] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{247, 247}
+#                       +------------------+-------------------+
+# [time=70] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=27.14%       |
+# | coverage_R=32.69%      |
+# [time=75] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=1 
+# [time=80] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=80] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =220 | 
+# 
+# 
+# 
+# =======================
+#   full condition check
+# =======================
+# [time=85] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=90] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=90] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=220 |full=0 
+# [time=90] SCOREBOARD write operation sucessful! ------------------------------------------------->size=3 q='{247, 247, 220}
+#                       +------------------+-------------------+
+# [time=90] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=28.10%       |
+# | coverage_R=32.69%      |
+# [time=95] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=100] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=100] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 94 | 
+# [time=105] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=110] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=110] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 94 |full=0 
+# [time=110] SCOREBOARD write operation sucessful! ------------------------------------------------->size=4 q='{247, 247, 220, 94}
+#                       +------------------+-------------------+
+# [time=110] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=33.81%       |
+# | coverage_R=32.69%      |
+# [time=115] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=120] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=120] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  5 | 
+# [time=125] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=130] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=130] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  5 |full=0 
+# [time=130] SCOREBOARD write operation sucessful! ------------------------------------------------->size=5 q='{247, 247, 220, 94, 5}
+#                       +------------------+-------------------+
+# [time=130] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=39.52%       |
+# | coverage_R=32.69%      |
+# [time=135] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=140] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=140] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 35 | 
+# [time=145] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=150] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=150] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 35 |full=0 
+# [time=150] SCOREBOARD write operation sucessful! ------------------------------------------------->size=6 q='{247, 247, 220, 94, 5, 35}
+#                       +------------------+-------------------+
+# [time=150] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=40.48%       |
+# | coverage_R=32.69%      |
+# [time=155] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=160] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=160] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =129 | 
+# [time=165] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=170] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=170] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=129 |full=0 
+# [time=170] SCOREBOARD write operation sucessful! ------------------------------------------------->size=7 q='{247, 247, 220, 94, 5, 35, 129}
+#                       +------------------+-------------------+
+# [time=170] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=41.43%       |
+# | coverage_R=36.54%      |
+# [time=175] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=180] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=180] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 72 | 
+# [time=185] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=190] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=190] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 72 |full=0 
+# [time=190] SCOREBOARD write operation sucessful! ------------------------------------------------->size=8 q='{247, 247, 220, 94, 5, 35, 129, 72}
+#                       +------------------+-------------------+
+# [time=190] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=42.38%       |
+# | coverage_R=36.54%      |
+# [time=195] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=200] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=200] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =152 | 
+# [time=205] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=210] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=210] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=152 |full=0 
+# [time=210] SCOREBOARD write operation sucessful! ------------------------------------------------->size=9 q='{247, 247, 220, 94, 5, 35, 129, 72, 152}
+#                       +------------------+-------------------+
+# [time=210] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=43.33%       |
+# | coverage_R=36.54%      |
+# [time=215] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=220] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=220] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =223 | 
+# [time=225] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=230] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=230] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=223 |full=0 
+# [time=230] SCOREBOARD write operation sucessful! ------------------------------------------------->size=10 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223}
+#                       +------------------+-------------------+
+# [time=230] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=44.29%       |
+# | coverage_R=36.54%      |
+# [time=235] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=240] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=240] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  5 | 
+# [time=245] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=250] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=250] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  5 |full=0 
+# [time=250] SCOREBOARD write operation sucessful! ------------------------------------------------->size=11 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5}
+#                       +------------------+-------------------+
+# [time=250] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=45.24%       |
+# | coverage_R=36.54%      |
+# [time=255] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=260] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=260] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =206 | 
+# [time=265] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=270] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=270] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=206 |full=0 
+# [time=270] SCOREBOARD write operation sucessful! ------------------------------------------------->size=12 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206}
+#                       +------------------+-------------------+
+# [time=270] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=46.19%       |
+# | coverage_R=36.54%      |
+# [time=275] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=280] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=280] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =146 | 
+# [time=285] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=290] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=290] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=146 |full=0 
+# [time=290] SCOREBOARD write operation sucessful! ------------------------------------------------->size=13 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146}
+#                       +------------------+-------------------+
+# [time=290] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=47.14%       |
+# | coverage_R=36.54%      |
+# [time=295] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=300] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=300] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =132 | 
+# [time=305] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=310] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=310] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=132 |full=0 
+# [time=310] SCOREBOARD write operation sucessful! ------------------------------------------------->size=14 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132}
+#                       +------------------+-------------------+
+# [time=310] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=62.38%       |
+# | coverage_R=36.54%      |
+# [time=315] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=320] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=320] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =250 | 
+# [time=325] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=330] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=330] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=250 |full=0 
+# [time=330] SCOREBOARD write operation sucessful! ------------------------------------------------->size=15 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250}
+#                       +------------------+-------------------+
+# [time=330] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=63.33%       |
+# | coverage_R=36.54%      |
+# [time=335] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=340] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=340] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =139 | 
+# [time=345] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=350] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=350] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=139 |full=0 
+# [time=350] SCOREBOARD write operation sucessful! ------------------------------------------------->size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+# [time=350] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=64.29%       |
+# | coverage_R=36.54%      |
+# [time=355] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=360] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=360] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =237 | 
+# [time=365] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=370] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=370] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=237 |full=1 
+# [time=370] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=375] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=380] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=380] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 47 | 
+# [time=385] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=390] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=390] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 47 |full=1 
+# [time=390] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=395] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=400] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=400] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 90 | 
+# [time=405] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=410] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=410] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 90 |full=1 
+# [time=410] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=415] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=420] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=420] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =195 | 
+# [time=425] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=430] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=430] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=195 |full=1 
+# [time=430] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=435] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=440] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=440] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 32 | 
+# [time=445] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=450] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=450] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 32 |full=1 
+# [time=450] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=455] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=460] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=460] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 11 | 
+# [time=465] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=470] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=470] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 11 |full=1 
+# [time=470] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=475] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=480] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=480] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 72 | 
+# 
+# 
+# 
+# =======================
+#         read only      
+# =======================
+# [time=485] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=490] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=490] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 72 |full=1 
+# [time=490] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=16 q='{247, 247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=78.57%       |
+# | coverage_R=44.23%      |
+# [time=495] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  0 |empty=0 
+# [time=500] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=500] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =197 | 
+# 
+# 
+# 
+# =======================
+#           empty        
+# =======================
+# [time=505] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  0 |empty=0 
+# [time=505] SCOREBOARD read operation successful! ------------------------------------------------>size=15  q='{247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =  0 | Expected_data =  0|
+# [time=505] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=510] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=510] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=197 |full=1 
+# [time=510] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=15 q='{247, 220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=515] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=247 |empty=0 
+# [time=515] SCOREBOARD read operation successful! ------------------------------------------------>size=14  q='{220, 94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =247 | Expected_data =247|
+# [time=515] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=520] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=520] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in = 23 | 
+# [time=525] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=247 |empty=0 
+# [time=525] SCOREBOARD read operation successful! ------------------------------------------------>size=13  q='{94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =247 | Expected_data =247|
+# [time=525] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=530] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=530] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in= 23 |full=1 
+# [time=530] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=13 q='{94, 5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=535] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=220 |empty=0 
+# [time=535] SCOREBOARD read operation successful! ------------------------------------------------>size=12  q='{5, 35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =220 | Expected_data =220|
+# [time=535] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=540] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=540] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in = 79 | 
+# [time=545] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 94 |empty=0 
+# [time=545] SCOREBOARD read operation successful! ------------------------------------------------>size=11  q='{35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data = 94 | Expected_data = 94|
+# [time=545] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=550] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=550] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in= 79 |full=1 
+# [time=550] SCOREBOARD write operation failed due to full! ------------------------------------------------>size=11 q='{35, 129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+# --------------------------------------------------------------------------------------------------
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=555] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  5 |empty=0 
+# [time=555] SCOREBOARD read operation successful! ------------------------------------------------>size=10  q='{129, 72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =  5 | Expected_data =  5|
+# [time=555] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=560] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=560] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =231 | 
+# [time=565] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 35 |empty=0 
+# [time=565] SCOREBOARD read operation successful! ------------------------------------------------>size=9  q='{72, 152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data = 35 | Expected_data = 35|
+# [time=565] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=570] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=570] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=231 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=575] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=129 |empty=0 
+# [time=575] SCOREBOARD read operation successful! ------------------------------------------------>size=8  q='{152, 223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =129 | Expected_data =129|
+# [time=575] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=580] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=580] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =229 | 
+# [time=585] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 72 |empty=0 
+# [time=585] SCOREBOARD read operation successful! ------------------------------------------------>size=7  q='{223, 5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data = 72 | Expected_data = 72|
+# [time=585] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=590] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=590] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=229 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=595] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=152 |empty=0 
+# [time=595] SCOREBOARD read operation successful! ------------------------------------------------>size=6  q='{5, 206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =152 | Expected_data =152|
+# [time=595] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=600] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=600] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =232 | 
+# [time=605] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=223 |empty=0 
+# [time=605] SCOREBOARD read operation successful! ------------------------------------------------>size=5  q='{206, 146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =223 | Expected_data =223|
+# [time=605] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=610] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=610] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=232 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=615] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  5 |empty=0 
+# [time=615] SCOREBOARD read operation successful! ------------------------------------------------>size=4  q='{146, 132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =  5 | Expected_data =  5|
+# [time=615] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=620] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=620] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =  5 | 
+# [time=625] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=206 |empty=0 
+# [time=625] SCOREBOARD read operation successful! ------------------------------------------------>size=3  q='{132, 250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =206 | Expected_data =206|
+# [time=625] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=630] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=630] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=  5 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=635] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=146 |empty=0 
+# [time=635] SCOREBOARD read operation successful! ------------------------------------------------>size=2  q='{250, 139}
+#                       +------------------+-------------------+
+#                       | Actual_data =146 | Expected_data =146|
+# [time=635] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=640] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=640] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =100 | 
+# [time=645] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=132 |empty=0 
+# [time=645] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{139}
+#                       +------------------+-------------------+
+#                       | Actual_data =132 | Expected_data =132|
+# [time=645] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=650] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=650] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=100 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=655] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=250 |empty=0 
+# [time=655] SCOREBOARD read operation successful! ------------------------------------------------>size=0  q='{}
+#                       +------------------+-------------------+
+#                       | Actual_data =250 | Expected_data =250|
+# [time=655] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=660] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=660] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =192 | 
+# [time=665] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=670] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=670] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=192 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=675] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=680] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=680] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =144 | 
+# [time=685] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=690] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=690] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=144 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=695] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=700] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=700] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =  6 | 
+# 
+# 
+# 
+# =======================
+#    read and write      
+# =======================
+# [time=705] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=710] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=710] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=  6 |full=0 
+# | coverage_w=85.71%       |
+# | coverage_R=50.00%      |
+# [time=715] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=720] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=720] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 23 | 
+# [time=725] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=730] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=730] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 23 |full=0 
+# [time=730] SCOREBOARD write operation sucessful! ------------------------------------------------->size=1 q='{23}
+#                       +------------------+-------------------+
+# [time=730] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=1  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=735] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=740] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=740] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 46 | 
+# [time=745] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=750] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=750] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 46 |full=0 
+# [time=750] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{23, 46}
+#                       +------------------+-------------------+
+# [time=750] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=755] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=760] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=760] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =155 | 
+# [time=765] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=0 
+# [time=765] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{46}
+#                       +------------------+-------------------+
+#                       | Actual_data =139 | Expected_data =139|
+# [time=765] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=770] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=770] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=155 |full=0 
+# [time=770] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{46, 155}
+#                       +------------------+-------------------+
+# [time=770] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=775] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 23 |empty=1 
+# [time=780] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=780] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =234 | 
+# [time=785] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 23 |empty=0 
+# [time=785] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{155}
+#                       +------------------+-------------------+
+#                       | Actual_data = 23 | Expected_data = 23|
+# [time=785] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=790] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=790] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=234 |full=0 
+# [time=790] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{155, 234}
+#                       +------------------+-------------------+
+# [time=790] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=795] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 46 |empty=1 
+# [time=800] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=800] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =177 | 
+# [time=805] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 46 |empty=0 
+# [time=805] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{234}
+#                       +------------------+-------------------+
+#                       | Actual_data = 46 | Expected_data = 46|
+# [time=805] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=810] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=810] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=177 |full=0 
+# [time=810] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{234, 177}
+#                       +------------------+-------------------+
+# [time=810] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=815] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=155 |empty=1 
+# [time=820] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=820] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =139 | 
+# [time=825] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=155 |empty=0 
+# [time=825] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{177}
+#                       +------------------+-------------------+
+#                       | Actual_data =155 | Expected_data =155|
+# [time=825] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=830] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=830] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=139 |full=0 
+# [time=830] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{177, 139}
+#                       +------------------+-------------------+
+# [time=830] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=835] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=234 |empty=1 
+# [time=840] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=840] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  9 | 
+# [time=845] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=234 |empty=0 
+# [time=845] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{139}
+#                       +------------------+-------------------+
+#                       | Actual_data =234 | Expected_data =234|
+# [time=845] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=850] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=850] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  9 |full=0 
+# [time=850] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{139, 9}
+#                       +------------------+-------------------+
+# [time=850] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=855] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=177 |empty=1 
+# [time=860] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=860] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =165 | 
+# [time=865] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=177 |empty=0 
+# [time=865] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{9}
+#                       +------------------+-------------------+
+#                       | Actual_data =177 | Expected_data =177|
+# [time=865] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=870] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=870] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=165 |full=0 
+# [time=870] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{9, 165}
+#                       +------------------+-------------------+
+# [time=870] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=875] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=1 
+# [time=880] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=880] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 26 | 
+# [time=885] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=139 |empty=0 
+# [time=885] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{165}
+#                       +------------------+-------------------+
+#                       | Actual_data =139 | Expected_data =139|
+# [time=885] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=890] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=890] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 26 |full=0 
+# [time=890] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{165, 26}
+#                       +------------------+-------------------+
+# [time=890] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=895] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  9 |empty=1 
+# [time=900] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=900] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =114 | 
+# [time=905] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  9 |empty=0 
+# [time=905] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{26}
+#                       +------------------+-------------------+
+#                       | Actual_data =  9 | Expected_data =  9|
+# [time=905] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=910] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=910] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=114 |full=0 
+# [time=910] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{26, 114}
+#                       +------------------+-------------------+
+# [time=910] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=915] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=165 |empty=1 
+# [time=920] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=920] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =145 | 
+# [time=925] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=165 |empty=0 
+# [time=925] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{114}
+#                       +------------------+-------------------+
+#                       | Actual_data =165 | Expected_data =165|
+# [time=925] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=930] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=930] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=145 |full=0 
+# [time=930] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{114, 145}
+#                       +------------------+-------------------+
+# [time=930] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=935] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 26 |empty=1 
+# [time=940] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=940] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 43 | 
+# [time=945] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 26 |empty=0 
+# [time=945] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{145}
+#                       +------------------+-------------------+
+#                       | Actual_data = 26 | Expected_data = 26|
+# [time=945] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=950] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=950] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 43 |full=0 
+# [time=950] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{145, 43}
+#                       +------------------+-------------------+
+# [time=950] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=955] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=114 |empty=1 
+# [time=960] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=960] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =161 | 
+# [time=965] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=114 |empty=0 
+# [time=965] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{43}
+#                       +------------------+-------------------+
+#                       | Actual_data =114 | Expected_data =114|
+# [time=965] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=970] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=970] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=161 |full=0 
+# [time=970] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{43, 161}
+#                       +------------------+-------------------+
+# [time=970] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=975] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=145 |empty=1 
+# [time=980] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=980] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =147 | 
+# [time=985] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=145 |empty=0 
+# [time=985] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{161}
+#                       +------------------+-------------------+
+#                       | Actual_data =145 | Expected_data =145|
+# [time=985] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=990] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=990] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=147 |full=0 
+# [time=990] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{161, 147}
+#                       +------------------+-------------------+
+# [time=990] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=50.00%      |
+# [time=995] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 43 |empty=1 
+# [time=1000] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1000] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 75 | 
+# [time=1005] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 43 |empty=0 
+# [time=1005] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{147}
+#                       +------------------+-------------------+
+#                       | Actual_data = 43 | Expected_data = 43|
+# [time=1005] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1010] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1010] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 75 |full=0 
+# [time=1010] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{147, 75}
+#                       +------------------+-------------------+
+# [time=1010] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=59.62%      |
+# [time=1015] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=161 |empty=1 
+# [time=1020] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1020] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 36 | 
+# [time=1025] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=161 |empty=0 
+# [time=1025] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{75}
+#                       +------------------+-------------------+
+#                       | Actual_data =161 | Expected_data =161|
+# [time=1025] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1030] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1030] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 36 |full=0 
+# [time=1030] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{75, 36}
+#                       +------------------+-------------------+
+# [time=1030] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=62.73%      |
+# [time=1035] MONITOR[READ] : r_reset=1 | read_enable=1  | data_out=147 |empty=1 
+# [time=1040] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1040] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =162 | 
+# [time=1045] MONITOR[READ] : r_reset=1 | read_enable=1  | data_out=147 |empty=1 
+# [time=1050] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1050] MONITOR[WRITE]: w_reset=1 | write_enable=1 | data_in=162 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=63.28%      |
+# [time=1055] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=1 
+# [time=1060] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1060] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 56 | 
+# [time=1065] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=1 
+# [time=1070] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1070] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 56 |full=0 
+# [time=1070] SCOREBOARD write operation sucessful! ------------------------------------------------->size=1 q='{56}
+#                       +------------------+-------------------+
+# [time=1070] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=1  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=63.83%      |
+# [time=1075] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=1 
+# [time=1080] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1080] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =146 | 
+# [time=1085] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=1 
+# [time=1090] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1090] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=146 |full=0 
+# [time=1090] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{56, 146}
+#                       +------------------+-------------------+
+# [time=1090] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=66.94%      |
+# [time=1095] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=1 
+# [time=1100] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1100] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 19 | 
+# [time=1105] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=147 |empty=0 
+# [time=1105] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{146}
+#                       +------------------+-------------------+
+#                       | Actual_data =147 | Expected_data =147|
+# [time=1105] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1110] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1110] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 19 |full=0 
+# [time=1110] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{146, 19}
+#                       +------------------+-------------------+
+# [time=1110] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=70.05%      |
+# [time=1115] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 56 |empty=1 
+# [time=1120] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1120] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =140 | 
+# [time=1125] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 56 |empty=0 
+# [time=1125] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{19}
+#                       +------------------+-------------------+
+#                       | Actual_data = 56 | Expected_data = 56|
+# [time=1125] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1130] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1130] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=140 |full=0 
+# [time=1130] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{19, 140}
+#                       +------------------+-------------------+
+# [time=1130] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=70.60%      |
+# [time=1135] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=146 |empty=1 
+# [time=1140] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1140] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 53 | 
+# [time=1145] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=146 |empty=0 
+# [time=1145] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{140}
+#                       +------------------+-------------------+
+#                       | Actual_data =146 | Expected_data =146|
+# [time=1145] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1150] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1150] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 53 |full=0 
+# [time=1150] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{140, 53}
+#                       +------------------+-------------------+
+# [time=1150] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=71.15%      |
+# [time=1155] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 19 |empty=1 
+# [time=1160] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1160] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =204 | 
+# [time=1165] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 19 |empty=0 
+# [time=1165] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{53}
+#                       +------------------+-------------------+
+#                       | Actual_data = 19 | Expected_data = 19|
+# [time=1165] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1170] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1170] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=204 |full=0 
+# [time=1170] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{53, 204}
+#                       +------------------+-------------------+
+# [time=1170] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=71.70%      |
+# [time=1175] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=140 |empty=1 
+# [time=1180] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1180] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 53 | 
+# [time=1185] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=140 |empty=0 
+# [time=1185] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{204}
+#                       +------------------+-------------------+
+#                       | Actual_data =140 | Expected_data =140|
+# [time=1185] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1190] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1190] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 53 |full=0 
+# [time=1190] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{204, 53}
+#                       +------------------+-------------------+
+# [time=1190] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=72.25%      |
+# [time=1195] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 53 |empty=1 
+# [time=1200] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1200] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 68 | 
+# [time=1205] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 53 |empty=0 
+# [time=1205] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{53}
+#                       +------------------+-------------------+
+#                       | Actual_data = 53 | Expected_data = 53|
+# [time=1205] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1210] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1210] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 68 |full=0 
+# [time=1210] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{53, 68}
+#                       +------------------+-------------------+
+# [time=1210] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=72.80%      |
+# [time=1215] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=204 |empty=1 
+# [time=1220] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1220] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =164 | 
+# [time=1225] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=204 |empty=0 
+# [time=1225] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{68}
+#                       +------------------+-------------------+
+#                       | Actual_data =204 | Expected_data =204|
+# [time=1225] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1230] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1230] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=164 |full=0 
+# [time=1230] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{68, 164}
+#                       +------------------+-------------------+
+# [time=1230] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=73.35%      |
+# [time=1235] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 53 |empty=1 
+# [time=1240] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1240] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 96 | 
+# [time=1245] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 53 |empty=0 
+# [time=1245] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{164}
+#                       +------------------+-------------------+
+#                       | Actual_data = 53 | Expected_data = 53|
+# [time=1245] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1250] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1250] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 96 |full=0 
+# [time=1250] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{164, 96}
+#                       +------------------+-------------------+
+# [time=1250] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=73.90%      |
+# [time=1255] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 68 |empty=1 
+# [time=1260] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1260] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =141 | 
+# [time=1265] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 68 |empty=0 
+# [time=1265] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{96}
+#                       +------------------+-------------------+
+#                       | Actual_data = 68 | Expected_data = 68|
+# [time=1265] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1270] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1270] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=141 |full=0 
+# [time=1270] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{96, 141}
+#                       +------------------+-------------------+
+# [time=1270] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=74.45%      |
+# [time=1275] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=164 |empty=1 
+# [time=1280] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1280] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 99 | 
+# [time=1285] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=164 |empty=0 
+# [time=1285] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{141}
+#                       +------------------+-------------------+
+#                       | Actual_data =164 | Expected_data =164|
+# [time=1285] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1290] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1290] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 99 |full=0 
+# [time=1290] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{141, 99}
+#                       +------------------+-------------------+
+# [time=1290] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=82.69%      |
+# [time=1295] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 96 |empty=1 
+# [time=1300] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1300] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 78 | 
+# [time=1305] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 96 |empty=0 
+# [time=1305] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{99}
+#                       +------------------+-------------------+
+#                       | Actual_data = 96 | Expected_data = 96|
+# [time=1305] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1310] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1310] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 78 |full=0 
+# [time=1310] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{99, 78}
+#                       +------------------+-------------------+
+# [time=1310] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=82.69%      |
+# [time=1315] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=141 |empty=1 
+# [time=1320] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1320] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 76 | 
+# [time=1325] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=141 |empty=0 
+# [time=1325] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{78}
+#                       +------------------+-------------------+
+#                       | Actual_data =141 | Expected_data =141|
+# [time=1325] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1330] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1330] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 76 |full=0 
+# [time=1330] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{78, 76}
+#                       +------------------+-------------------+
+# [time=1330] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1335] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 99 |empty=1 
+# [time=1340] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1340] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 16 | 
+# [time=1345] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 99 |empty=0 
+# [time=1345] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{76}
+#                       +------------------+-------------------+
+#                       | Actual_data = 99 | Expected_data = 99|
+# [time=1345] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1350] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1350] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 16 |full=0 
+# [time=1350] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{76, 16}
+#                       +------------------+-------------------+
+# [time=1350] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1355] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 78 |empty=1 
+# [time=1360] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1360] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =207 | 
+# [time=1365] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 78 |empty=0 
+# [time=1365] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{16}
+#                       +------------------+-------------------+
+#                       | Actual_data = 78 | Expected_data = 78|
+# [time=1365] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1370] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1370] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=207 |full=0 
+# [time=1370] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{16, 207}
+#                       +------------------+-------------------+
+# [time=1370] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1375] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 76 |empty=1 
+# [time=1380] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1380] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =172 | 
+# [time=1385] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 76 |empty=0 
+# [time=1385] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{207}
+#                       +------------------+-------------------+
+#                       | Actual_data = 76 | Expected_data = 76|
+# [time=1385] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1390] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1390] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=172 |full=0 
+# [time=1390] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{207, 172}
+#                       +------------------+-------------------+
+# [time=1390] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1395] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 16 |empty=1 
+# [time=1400] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1400] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  3 | 
+# [time=1405] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 16 |empty=0 
+# [time=1405] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{172}
+#                       +------------------+-------------------+
+#                       | Actual_data = 16 | Expected_data = 16|
+# [time=1405] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1410] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1410] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  3 |full=0 
+# [time=1410] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{172, 3}
+#                       +------------------+-------------------+
+# [time=1410] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1415] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=207 |empty=1 
+# [time=1420] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1420] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 21 | 
+# [time=1425] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=207 |empty=0 
+# [time=1425] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{3}
+#                       +------------------+-------------------+
+#                       | Actual_data =207 | Expected_data =207|
+# [time=1425] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1430] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1430] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 21 |full=0 
+# [time=1430] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{3, 21}
+#                       +------------------+-------------------+
+# [time=1430] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1435] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=172 |empty=1 
+# [time=1440] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1440] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =244 | 
+# [time=1445] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=172 |empty=0 
+# [time=1445] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{21}
+#                       +------------------+-------------------+
+#                       | Actual_data =172 | Expected_data =172|
+# [time=1445] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1450] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1450] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=244 |full=0 
+# [time=1450] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{21, 244}
+#                       +------------------+-------------------+
+# [time=1450] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1455] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  3 |empty=1 
+# [time=1460] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1460] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =177 | 
+# [time=1465] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  3 |empty=0 
+# [time=1465] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{244}
+#                       +------------------+-------------------+
+#                       | Actual_data =  3 | Expected_data =  3|
+# [time=1465] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1470] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1470] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=177 |full=0 
+# [time=1470] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{244, 177}
+#                       +------------------+-------------------+
+# [time=1470] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1475] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 21 |empty=1 
+# [time=1480] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1480] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =247 | 
+# [time=1485] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 21 |empty=0 
+# [time=1485] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{177}
+#                       +------------------+-------------------+
+#                       | Actual_data = 21 | Expected_data = 21|
+# [time=1485] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1490] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1490] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=247 |full=0 
+# [time=1490] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{177, 247}
+#                       +------------------+-------------------+
+# [time=1490] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1495] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=244 |empty=1 
+# [time=1500] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1500] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =113 | 
+# [time=1505] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=244 |empty=0 
+# [time=1505] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{247}
+#                       +------------------+-------------------+
+#                       | Actual_data =244 | Expected_data =244|
+# [time=1505] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1510] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1510] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=113 |full=0 
+# [time=1510] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{247, 113}
+#                       +------------------+-------------------+
+# [time=1510] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=90.38%      |
+# [time=1515] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=177 |empty=1 
+# [time=1520] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1520] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =198 | 
+# [time=1525] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=177 |empty=0 
+# [time=1525] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{113}
+#                       +------------------+-------------------+
+#                       | Actual_data =177 | Expected_data =177|
+# [time=1525] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1530] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1530] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=198 |full=0 
+# [time=1530] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{113, 198}
+#                       +------------------+-------------------+
+# [time=1530] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1535] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=247 |empty=1 
+# [time=1540] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1540] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =203 | 
+# [time=1545] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=247 |empty=0 
+# [time=1545] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{198}
+#                       +------------------+-------------------+
+#                       | Actual_data =247 | Expected_data =247|
+# [time=1545] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1550] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1550] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=203 |full=0 
+# [time=1550] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{198, 203}
+#                       +------------------+-------------------+
+# [time=1550] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1555] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=113 |empty=1 
+# [time=1560] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1560] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =191 | 
+# [time=1565] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=113 |empty=0 
+# [time=1565] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{203}
+#                       +------------------+-------------------+
+#                       | Actual_data =113 | Expected_data =113|
+# [time=1565] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1570] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1570] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=191 |full=0 
+# [time=1570] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{203, 191}
+#                       +------------------+-------------------+
+# [time=1570] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1575] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=198 |empty=1 
+# [time=1580] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1580] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =239 | 
+# [time=1585] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=198 |empty=0 
+# [time=1585] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{191}
+#                       +------------------+-------------------+
+#                       | Actual_data =198 | Expected_data =198|
+# [time=1585] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1590] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1590] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=239 |full=0 
+# [time=1590] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{191, 239}
+#                       +------------------+-------------------+
+# [time=1590] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1595] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=203 |empty=1 
+# [time=1600] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1600] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =188 | 
+# [time=1605] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=203 |empty=0 
+# [time=1605] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{239}
+#                       +------------------+-------------------+
+#                       | Actual_data =203 | Expected_data =203|
+# [time=1605] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1610] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1610] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=188 |full=0 
+# [time=1610] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{239, 188}
+#                       +------------------+-------------------+
+# [time=1610] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1615] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=191 |empty=1 
+# [time=1620] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1620] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 41 | 
+# [time=1625] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=191 |empty=0 
+# [time=1625] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{188}
+#                       +------------------+-------------------+
+#                       | Actual_data =191 | Expected_data =191|
+# [time=1625] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1630] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1630] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 41 |full=0 
+# [time=1630] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{188, 41}
+#                       +------------------+-------------------+
+# [time=1630] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1635] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=239 |empty=1 
+# [time=1640] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1640] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  8 | 
+# [time=1645] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=239 |empty=0 
+# [time=1645] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{41}
+#                       +------------------+-------------------+
+#                       | Actual_data =239 | Expected_data =239|
+# [time=1645] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1650] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1650] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  8 |full=0 
+# [time=1650] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{41, 8}
+#                       +------------------+-------------------+
+# [time=1650] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1655] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=188 |empty=1 
+# [time=1660] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1660] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  4 | 
+# [time=1665] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=188 |empty=0 
+# [time=1665] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{8}
+#                       +------------------+-------------------+
+#                       | Actual_data =188 | Expected_data =188|
+# [time=1665] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1670] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1670] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  4 |full=0 
+# [time=1670] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{8, 4}
+#                       +------------------+-------------------+
+# [time=1670] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1675] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 41 |empty=1 
+# [time=1680] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1680] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in =  7 | 
+# [time=1685] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out= 41 |empty=0 
+# [time=1685] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{4}
+#                       +------------------+-------------------+
+#                       | Actual_data = 41 | Expected_data = 41|
+# [time=1685] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1690] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1690] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in=  7 |full=0 
+# [time=1690] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{4, 7}
+#                       +------------------+-------------------+
+# [time=1690] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1695] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  8 |empty=1 
+# [time=1700] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1700] DRIVER [WRITE]: w_reset=0 | write_enable=1 | data_in = 21 | 
+# 
+# 
+# 
+# =======================
+#        NO operation    
+# =======================
+# [time=1705] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  8 |empty=0 
+# [time=1705] SCOREBOARD read operation successful! ------------------------------------------------>size=1  q='{7}
+#                       +------------------+-------------------+
+#                       | Actual_data =  8 | Expected_data =  8|
+# [time=1705] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# =>|PASS|<=
+# ======================================================================================================
+# [time=1710] DRIVER[READ]  : r_reset=0 | read_enable=1  
+# [time=1710] MONITOR[WRITE]: w_reset=0 | write_enable=1 | data_in= 21 |full=0 
+# [time=1710] SCOREBOARD write operation sucessful! ------------------------------------------------->size=2 q='{7, 21}
+#                       +------------------+-------------------+
+# [time=1710] SCOREBOARD | Actual_full =0   | Expected_full =0  |
+#                       | Actual_empty=0   | Expected_empty=0  |
+#                       +------------------+-------------------+
+# | coverage_w=100.00%       |
+# | coverage_R=98.08%      |
+# [time=1715] MONITOR[READ] : r_reset=0 | read_enable=1  | data_out=  4 |empty=1 
+# [time=1720] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=1720] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =106 | 
+# [time=1725] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1730] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=1730] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=106 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=100.00%      |
+# [time=1735] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1740] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=1740] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =130 | 
+# [time=1745] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1750] DRIVER[READ]  : r_reset=0 | read_enable=0  
+# [time=1750] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=130 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=100.00%      |
+# [time=1755] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1760] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =138 | 
+# [time=1765] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1770] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=138 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=100.00%      |
+# [time=1775] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1780] DRIVER [WRITE]: w_reset=0 | write_enable=0 | data_in =168 | 
+# [time=1785] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1790] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=168 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=100.00%      |
+# [time=1795] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1805] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# [time=1810] MONITOR[WRITE]: w_reset=0 | write_enable=0 | data_in=168 |full=0 
+# | coverage_w=100.00%       |
+# | coverage_R=100.00%      |
+#####################################################
+#     TOTAL NO OF TEST_CASES=126                    #
+#     PASSED=126                                    #
+#     FAILED=0                                      #
+#     SUCCESS RATE=100.000000                       #
+#####################################################
+# [time=1815] MONITOR[READ] : r_reset=0 | read_enable=0  | data_out=  4 |empty=0 
+# ** Note: $stop    : environment.sv(63)
+#    Time: 1816 ns  Iteration: 0  Instance: /testbench
+# Break in Task environment::e_run at environment.sv line 63
+# Stopped at environment.sv line 63
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /design_sv_unit
+# === Design Unit: work.design_sv_unit
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      2        na        na   100.00%
+#         Coverpoints/Crosses         20        na        na        na
+#             Covergroup Bins         61        61         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /design_sv_unit/coverage/async_wr               100.00%        100          -    Covered              
+#     covered/total bins:                                    25         25          -                      
+#     missing/total bins:                                     0         25          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint rst                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint data_in                                100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint wen                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint write_only                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint ful                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint wptr_check                             100.00%        100          -    Covered              
+#         covered/total bins:                                15         15          -                      
+#         missing/total bins:                                 0         15          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint wptr_wrap                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/design_sv_unit::coverage::async_wr  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    25         25          -                      
+#     missing/total bins:                                     0         25          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint rst                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        88          1          -    Covered              
+#         bin auto[1]                                         2          1          -    Covered              
+#     Coverpoint data_in                                100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin low                                            34          1          -    Covered              
+#         bin med                                            28          1          -    Covered              
+#         bin high                                           26          1          -    Covered              
+#     Coverpoint wen                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        16          1          -    Covered              
+#         bin auto[1]                                        74          1          -    Covered              
+#     Coverpoint write_only                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                              46          1          -    Covered              
+#     Coverpoint ful                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin f                                               7          1          -    Covered              
+#     Coverpoint wptr_check                             100.00%        100          -    Covered              
+#         covered/total bins:                                15         15          -                      
+#         missing/total bins:                                 0         15          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b1                                              2          1          -    Covered              
+#         bin b2                                              2          1          -    Covered              
+#         bin b3                                              2          1          -    Covered              
+#         bin b4                                              2          1          -    Covered              
+#         bin b5                                              2          1          -    Covered              
+#         bin b6                                              2          1          -    Covered              
+#         bin b7                                              2          1          -    Covered              
+#         bin b8                                              2          1          -    Covered              
+#         bin b9                                              2          1          -    Covered              
+#         bin b10                                             2          1          -    Covered              
+#         bin b11                                             2          1          -    Covered              
+#         bin b12                                             2          1          -    Covered              
+#         bin b13                                             2          1          -    Covered              
+#         bin b14                                             2          1          -    Covered              
+#         bin b15                                             2          1          -    Covered              
+#     Coverpoint wptr_wrap                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                               2          1          -    Covered              
+#  TYPE /design_sv_unit/coverage/async_rd               100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint rst                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint dataout                                100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint emty                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint empty_check                            100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint ren                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint read_only                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rptr_check                             100.00%        100          -    Covered              
+#         covered/total bins:                                14         14          -                      
+#         missing/total bins:                                 0         14          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rptr_wrap                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint underflow                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint overflow                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint #t.w_en__0#                            100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint #t1.r_en__1#                           100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Cross simul_w_r                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 4          4          -                      
+#         missing/total bins:                                 0          4          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/design_sv_unit::coverage::async_rd  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint rst                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        88          1          -    Covered              
+#         bin auto[1]                                         2          1          -    Covered              
+#     Coverpoint dataout                                100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin low                                            10          1          -    Covered              
+#         bin med                                            20          1          -    Covered              
+#         bin high                                           10          1          -    Covered              
+#     Coverpoint emty                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        66          1          -    Covered              
+#         bin auto[1]                                        24          1          -    Covered              
+#     Coverpoint empty_check                            100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                               3          1          -    Covered              
+#     Coverpoint ren                                    100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        49          1          -    Covered              
+#         bin auto[1]                                        41          1          -    Covered              
+#     Coverpoint read_only                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                              27          1          -    Covered              
+#     Coverpoint rptr_check                             100.00%        100          -    Covered              
+#         covered/total bins:                                14         14          -                      
+#         missing/total bins:                                 0         14          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b1                                              1          1          -    Covered              
+#         bin b2                                              1          1          -    Covered              
+#         bin b3                                              1          1          -    Covered              
+#         bin b4                                              1          1          -    Covered              
+#         bin b5                                              1          1          -    Covered              
+#         bin b6                                              1          1          -    Covered              
+#         bin b7                                              1          1          -    Covered              
+#         bin b8                                              1          1          -    Covered              
+#         bin b9                                              1          1          -    Covered              
+#         bin b10                                             1          1          -    Covered              
+#         bin b11                                             1          1          -    Covered              
+#         bin b12                                             1          1          -    Covered              
+#         bin b13                                             1          1          -    Covered              
+#         bin b14                                             1          1          -    Covered              
+#     Coverpoint rptr_wrap                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                               1          1          -    Covered              
+#     Coverpoint underflow                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin underflow                                      17          1          -    Covered              
+#     Coverpoint overflow                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin overflow                                        7          1          -    Covered              
+#     Coverpoint #t.w_en__0#                            100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        16          1          -    Covered              
+#         bin auto[1]                                        74          1          -    Covered              
+#     Coverpoint #t1.r_en__1#                           100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                        49          1          -    Covered              
+#         bin auto[1]                                        41          1          -    Covered              
+#     Cross simul_w_r                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 4          4          -                      
+#         missing/total bins:                                 0          4          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <auto[1],auto[1]>                          35          1          -    Covered              
+#             bin <auto[0],auto[1]>                           5          1          -    Covered              
+#             bin <auto[1],auto[0]>                          36          1          -    Covered              
+#             bin <auto[0],auto[0]>                          11          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 2
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# 
+# Saving coverage database on exit...
+# End time: 05:15:16 on Jul 17,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+End time: 05:15:16 on Jul 17,2026, Elapsed time: 0:00:02
