@@ -1,0 +1,1913 @@
+QuestaSim-64 qrun 2025.2 Utility 2025.05 May 31 2025
+Start time: 09:36:01 on Jul 22,2026
+qrun -batch -access=rw+/. -timescale 1ns/1ns -coverage -mfcu design.sv testbench.sv -coverage -voptargs=""+acc"" -do "run.do" 
+** Note: (qrun-220) 'modelsim.ini' is used as the ini file.
+Creating library 'qrun.out/work'.
+QuestaSim-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 09:36:02 on Jul 22,2026
+vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -csession=incr 
+** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+-- Compiling module master_apb
+-- Compiling module alu
+-- Compiling module slave_apb
+-- Compiling module apb
+-- Compiling interface atoa
+-- Compiling package design_sv_unit
+-- Compiling module top
+
+Top level modules:
+	top
+End time: 09:36:02 on Jul 22,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+QuestaSim-64 vopt 2025.2 Compiler 2025.05 May 31 2025
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 09:36:02 on Jul 22,2026
+vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc" -findtoplevels qrun.out/work+2+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=3 
+** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
+
+Top level modules:
+	top
+
+Analyzing design...
+-- Loading module top
+-- Loading interface atoa
+-- Loading module apb
+-- Loading module master_apb
+-- Loading module slave_apb
+-- Loading module alu
+Optimizing 8 design-units (inlining 0/20 module instances):
+-- Optimizing package design_sv_unit(fast)
+-- Optimizing interface atoa(fast__2)
+-- Optimizing module apb(fast)
+-- Optimizing module alu(fast)
+-- Optimizing module master_apb(fast)
+** Note: (vopt-143) Recognized 1 FSM in module "master_apb(fast)".
+-- Optimizing module slave_apb(fast)
+-- Optimizing module top(fast)
+-- Optimizing interface atoa(fast)
+Optimized design name is qrun_opt
+End time: 09:36:03 on Jul 22,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 1
+# ** Note: (vsim-220) 'modelsim.ini' is used as the ini file.
+# vsim -batch -lib qrun.out/work -do "coverage save -onexit cov_$Sv_Seed.ucdb" -do "run.do" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 09:36:03 on Jul 22,2026
+# //  Questa Sim-64
+# //  Version 2025.2 linux_x86_64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.design_sv_unit(fast)
+# Loading work.top(fast)
+# Loading work.atoa(fast__2)
+# Loading work.apb(fast)
+# Loading work.master_apb(fast)
+# Loading work.slave_apb(fast)
+# Loading work.alu(fast)
+# Loading work.atoa(fast)
+# 
+# coverage save -onexit cov_$Sv_Seed.ucdb
+# do run.do
+# ==================================================================================================
+#                             APB TO ALU VERIFICATION  IN SV TESTBENCH                              
+# ==================================================================================================
+# ==============================
+#  testcase 1:  A=+ve  B=+ve   
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 22275 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 22375 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 26035 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 26115 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 26935 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 27015 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 46395 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 50335 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 50415 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 58695 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 109255 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 126195 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 132655 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 157855 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 171795 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 171915 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 183075 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 183175 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 183795 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 184095 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 190995 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 217255 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 217735 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 217815 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 217995 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 223135 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 223215 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 235875 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 235975 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 291195 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 319135 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 319215 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 331435 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 331515 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 335295 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 351535 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 351615 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 357655 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 368335 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 368415 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 369835 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 369915 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 377775 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 377875 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 382575 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 382675 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 392755 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 394735 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 394815 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 395175 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 395275 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 428775 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 428875 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 436135 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 436215 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 438075 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 438175 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 446035 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 446115 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 451555 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 455295 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 455775 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 455875 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 467155 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 481255 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 525795 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 526875 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 526975 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 528535 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 528615 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 533635 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 533715 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 539155 ns  Iteration: 2  Process: /top/dut/s5/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 552075 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 552175 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 566455 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 568095 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 569035 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 569115 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 588235 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 588315 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 602635 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 602715 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 608335 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 608415 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 612375 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 612475 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 614475 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 614575 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 617475 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 617575 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 618235 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 618315 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 623935 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 624015 ns  Iteration: 2  Process: /top/dut/s4/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 647295 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 669955 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 675495 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 676875 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 676975 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 682575 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 682675 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 683635 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 683715 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 690235 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 690315 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 705055 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 751555 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 762795 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 778275 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 778375 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 778855 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 787735 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 787815 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 793735 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 793815 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000100 -> 00001000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00001000 -> 00010000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00010000 -> 00100000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 837355 ns  Iteration: 2  Process: /top/dut/s6/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00100000 -> 01000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 844995 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 850875 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 850975 ns  Iteration: 2  Process: /top/dut/s7/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 01000000 -> 10000000
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 855675 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 855775 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 860595 ns  Iteration: 2  Process: /top/dut/s8/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 10000000 -> 00000001
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 868275 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 868375 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 875295 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 875635 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 875715 ns  Iteration: 2  Process: /top/dut/s1/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000001 -> 00000010
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 881595 ns  Iteration: 2  Process: /top/dut/s2/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+# ==============================
+#       Changing Slave
+# ==============================
+# ========================================================
+# SLAVE CHANGED : 00000010 -> 00000100
+# Dropping current transaction
+# ========================================================
+# ********** TRANSACTION DROPPED **********
+# ==============================
+#  testcase 2: A=+ve  B=-ve
+# ==============================
+# ==============================
+#  testcase 3:  A=-ve  B=+ve
+# ==============================
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 894975 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ** Warning: (vsim-8630) Infinity results from division operation.
+#    Time: 895075 ns  Iteration: 2  Process: /top/dut/s3/a1/#ALWAYS#13 File: apb_slave.sv Line: 21
+# ==============================
+#  testcase 4:  A=-ve  B=-ve
+# ==============================
+#####################################################
+#     TOTAL NO OF TEST_CASES=5925                    #
+#     PASSED=5925                                    #
+#     FAILED=0                                      #
+#     SUCCESS RATE=100.000000                       #
+#####################################################
+# ** Note: $stop    : environment.sv(46)
+#    Time: 900001 ns  Iteration: 0  Instance: /top
+# Break in Task environment::e_run at environment.sv line 46
+# Stopped at environment.sv line 46
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /design_sv_unit
+# === Design Unit: work.design_sv_unit
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      1        na        na   100.00%
+#         Coverpoints/Crosses         17        na        na        na
+#             Covergroup Bins        179       179         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /design_sv_unit/coverage__1/cov_apbtoalu        100.00%        100          -    Covered              
+#     covered/total bins:                                   179        179          -                      
+#     missing/total bins:                                     0        179          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint RESET                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                         1          1          -    Covered              
+#         bin auto[1]                                     89999          1          -    Covered              
+#     Coverpoint OPERAND_A                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin neg                                         39300          1          -    Covered              
+#         bin pos                                         50700          1          -    Covered              
+#     Coverpoint OPERAND_B                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin neg                                         39717          1          -    Covered              
+#         bin pos                                         50283          1          -    Covered              
+#     Coverpoint OPCODE                                 100.00%        100          -    Covered              
+#         covered/total bins:                                16         16          -                      
+#         missing/total bins:                                 0         16          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b[0]                                         3066          1          -    Covered              
+#         bin b[1]                                         1032          1          -    Covered              
+#         bin b[2]                                          936          1          -    Covered              
+#         bin b[3]                                          987          1          -    Covered              
+#         bin b[4]                                         1029          1          -    Covered              
+#         bin b[5]                                         1020          1          -    Covered              
+#         bin b[6]                                          924          1          -    Covered              
+#         bin b[7]                                          897          1          -    Covered              
+#         bin b[8]                                          933          1          -    Covered              
+#         bin b[9]                                         1119          1          -    Covered              
+#         bin b[10]                                        1035          1          -    Covered              
+#         bin b[11]                                         933          1          -    Covered              
+#         bin b[12]                                        1035          1          -    Covered              
+#         bin b[13]                                         939          1          -    Covered              
+#         bin b[14]                                         981          1          -    Covered              
+#         bin b[15]                                        1134          1          -    Covered              
+#     Coverpoint OUTPUT                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin neg                                          3179          1          -    Covered              
+#         bin pos                                         13102          1          -    Covered              
+#     Coverpoint FLAG                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin neg                                          3602          1          -    Covered              
+#         bin pos                                         14060          1          -    Covered              
+#     Coverpoint PADDR                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin p[0]                                        18000          1          -    Covered              
+#         bin p[4]                                        18000          1          -    Covered              
+#         bin p[8]                                        18000          1          -    Covered              
+#         bin p[12]                                       18000          1          -    Covered              
+#         bin p[16]                                       18000          1          -    Covered              
+#     Coverpoint Transfer                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin b                                           90000          1          -    Covered              
+#     Coverpoint w_en1                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin w                                           18000          1          -    Covered              
+#     Coverpoint w_en2                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin w                                           18000          1          -    Covered              
+#     Coverpoint w_en3                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin w                                           18000          1          -    Covered              
+#     Coverpoint w_en4                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin w                                           18000          1          -    Covered              
+#     Coverpoint w_en5                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin w                                           18000          1          -    Covered              
+#     Coverpoint SLAVE_SEL                              100.00%        100          -    Covered              
+#         covered/total bins:                                 8          8          -                      
+#         missing/total bins:                                 0          8          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin slv[1]                                      12002          1          -    Covered              
+#         bin slv[2]                                      12000          1          -    Covered              
+#         bin slv[4]                                      11995          1          -    Covered              
+#         bin slv[8]                                      10800          1          -    Covered              
+#         bin slv[16]                                     10800          1          -    Covered              
+#         bin slv[32]                                     10800          1          -    Covered              
+#         bin slv[64]                                     10800          1          -    Covered              
+#         bin slv[128]                                    10800          1          -    Covered              
+#     Coverpoint PENABLE                                100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin access_phase                                44999          1          -    Covered              
+#         bin setup_phase                                 45001          1          -    Covered              
+#     Cross OPERAND_AXB                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 4          4          -                      
+#         missing/total bins:                                 0          4          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <pos,pos>                               28212          1          -    Covered              
+#             bin <neg,pos>                               22071          1          -    Covered              
+#             bin <pos,neg>                               22488          1          -    Covered              
+#             bin <neg,neg>                               17229          1          -    Covered              
+#     Cross FULL_SLAVE_CHECK                            100.00%        100          -    Covered              
+#         covered/total bins:                               128        128          -                      
+#         missing/total bins:                                 0        128          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <b[15],slv[128]>                          114          1          -    Covered              
+#             bin <b[14],slv[128]>                          114          1          -    Covered              
+#             bin <b[13],slv[128]>                          123          1          -    Covered              
+#             bin <b[12],slv[128]>                          126          1          -    Covered              
+#             bin <b[11],slv[128]>                           87          1          -    Covered              
+#             bin <b[10],slv[128]>                           99          1          -    Covered              
+#             bin <b[9],slv[128]>                           111          1          -    Covered              
+#             bin <b[8],slv[128]>                           108          1          -    Covered              
+#             bin <b[7],slv[128]>                           132          1          -    Covered              
+#             bin <b[6],slv[128]>                           117          1          -    Covered              
+#             bin <b[5],slv[128]>                           123          1          -    Covered              
+#             bin <b[4],slv[128]>                           132          1          -    Covered              
+#             bin <b[3],slv[128]>                           129          1          -    Covered              
+#             bin <b[2],slv[128]>                            99          1          -    Covered              
+#             bin <b[1],slv[128]>                           132          1          -    Covered              
+#             bin <b[0],slv[128]>                           414          1          -    Covered              
+#             bin <b[15],slv[64]>                           123          1          -    Covered              
+#             bin <b[14],slv[64]>                           144          1          -    Covered              
+#             bin <b[13],slv[64]>                            99          1          -    Covered              
+#             bin <b[12],slv[64]>                           150          1          -    Covered              
+#             bin <b[11],slv[64]>                           108          1          -    Covered              
+#             bin <b[10],slv[64]>                           120          1          -    Covered              
+#             bin <b[9],slv[64]>                            147          1          -    Covered              
+#             bin <b[8],slv[64]>                            117          1          -    Covered              
+#             bin <b[7],slv[64]>                             84          1          -    Covered              
+#             bin <b[6],slv[64]>                             87          1          -    Covered              
+#             bin <b[5],slv[64]>                            117          1          -    Covered              
+#             bin <b[4],slv[64]>                            135          1          -    Covered              
+#             bin <b[3],slv[64]>                            129          1          -    Covered              
+#             bin <b[2],slv[64]>                            126          1          -    Covered              
+#             bin <b[1],slv[64]>                             90          1          -    Covered              
+#             bin <b[0],slv[64]>                            384          1          -    Covered              
+#             bin <b[15],slv[32]>                           171          1          -    Covered              
+#             bin <b[14],slv[32]>                            99          1          -    Covered              
+#             bin <b[13],slv[32]>                           102          1          -    Covered              
+#             bin <b[12],slv[32]>                           117          1          -    Covered              
+#             bin <b[11],slv[32]>                           132          1          -    Covered              
+#             bin <b[10],slv[32]>                           132          1          -    Covered              
+#             bin <b[9],slv[32]>                            138          1          -    Covered              
+#             bin <b[8],slv[32]>                            135          1          -    Covered              
+#             bin <b[7],slv[32]>                            129          1          -    Covered              
+#             bin <b[6],slv[32]>                            117          1          -    Covered              
+#             bin <b[5],slv[32]>                             78          1          -    Covered              
+#             bin <b[4],slv[32]>                            117          1          -    Covered              
+#             bin <b[3],slv[32]>                            129          1          -    Covered              
+#             bin <b[2],slv[32]>                            120          1          -    Covered              
+#             bin <b[1],slv[32]>                            102          1          -    Covered              
+#             bin <b[0],slv[32]>                            342          1          -    Covered              
+#             bin <b[15],slv[16]>                           159          1          -    Covered              
+#             bin <b[14],slv[16]>                           135          1          -    Covered              
+#             bin <b[13],slv[16]>                           120          1          -    Covered              
+#             bin <b[12],slv[16]>                           102          1          -    Covered              
+#             bin <b[11],slv[16]>                            99          1          -    Covered              
+#             bin <b[10],slv[16]>                           132          1          -    Covered              
+#             bin <b[9],slv[16]>                            177          1          -    Covered              
+#             bin <b[8],slv[16]>                             90          1          -    Covered              
+#             bin <b[7],slv[16]>                            111          1          -    Covered              
+#             bin <b[6],slv[16]>                            102          1          -    Covered              
+#             bin <b[5],slv[16]>                            150          1          -    Covered              
+#             bin <b[4],slv[16]>                            129          1          -    Covered              
+#             bin <b[3],slv[16]>                            102          1          -    Covered              
+#             bin <b[2],slv[16]>                            102          1          -    Covered              
+#             bin <b[1],slv[16]>                            102          1          -    Covered              
+#             bin <b[0],slv[16]>                            348          1          -    Covered              
+#             bin <b[15],slv[8]>                            132          1          -    Covered              
+#             bin <b[14],slv[8]>                             99          1          -    Covered              
+#             bin <b[13],slv[8]>                            111          1          -    Covered              
+#             bin <b[12],slv[8]>                            111          1          -    Covered              
+#             bin <b[11],slv[8]>                             93          1          -    Covered              
+#             bin <b[10],slv[8]>                            123          1          -    Covered              
+#             bin <b[9],slv[8]>                             138          1          -    Covered              
+#             bin <b[8],slv[8]>                              96          1          -    Covered              
+#             bin <b[7],slv[8]>                             126          1          -    Covered              
+#             bin <b[6],slv[8]>                              78          1          -    Covered              
+#             bin <b[5],slv[8]>                             108          1          -    Covered              
+#             bin <b[4],slv[8]>                             132          1          -    Covered              
+#             bin <b[3],slv[8]>                             156          1          -    Covered              
+#             bin <b[2],slv[8]>                             153          1          -    Covered              
+#             bin <b[1],slv[8]>                             147          1          -    Covered              
+#             bin <b[0],slv[8]>                             357          1          -    Covered              
+#             bin <b[15],slv[4]>                            159          1          -    Covered              
+#             bin <b[14],slv[4]>                            120          1          -    Covered              
+#             bin <b[13],slv[4]>                            129          1          -    Covered              
+#             bin <b[12],slv[4]>                            144          1          -    Covered              
+#             bin <b[11],slv[4]>                            132          1          -    Covered              
+#             bin <b[10],slv[4]>                            141          1          -    Covered              
+#             bin <b[9],slv[4]>                             144          1          -    Covered              
+#             bin <b[8],slv[4]>                             150          1          -    Covered              
+#             bin <b[7],slv[4]>                             123          1          -    Covered              
+#             bin <b[6],slv[4]>                             135          1          -    Covered              
+#             bin <b[5],slv[4]>                             162          1          -    Covered              
+#             bin <b[4],slv[4]>                             126          1          -    Covered              
+#             bin <b[3],slv[4]>                             114          1          -    Covered              
+#             bin <b[2],slv[4]>                              99          1          -    Covered              
+#             bin <b[1],slv[4]>                             147          1          -    Covered              
+#             bin <b[0],slv[4]>                             375          1          -    Covered              
+#             bin <b[15],slv[2]>                            117          1          -    Covered              
+#             bin <b[14],slv[2]>                            120          1          -    Covered              
+#             bin <b[13],slv[2]>                            153          1          -    Covered              
+#             bin <b[12],slv[2]>                            150          1          -    Covered              
+#             bin <b[11],slv[2]>                            132          1          -    Covered              
+#             bin <b[10],slv[2]>                            150          1          -    Covered              
+#             bin <b[9],slv[2]>                             144          1          -    Covered              
+#             bin <b[8],slv[2]>                             129          1          -    Covered              
+#             bin <b[7],slv[2]>                              99          1          -    Covered              
+#             bin <b[6],slv[2]>                             153          1          -    Covered              
+#             bin <b[5],slv[2]>                             153          1          -    Covered              
+#             bin <b[4],slv[2]>                             123          1          -    Covered              
+#             bin <b[3],slv[2]>                             105          1          -    Covered              
+#             bin <b[2],slv[2]>                             120          1          -    Covered              
+#             bin <b[1],slv[2]>                             162          1          -    Covered              
+#             bin <b[0],slv[2]>                             390          1          -    Covered              
+#             bin <b[15],slv[1]>                            159          1          -    Covered              
+#             bin <b[14],slv[1]>                            150          1          -    Covered              
+#             bin <b[13],slv[1]>                            102          1          -    Covered              
+#             bin <b[12],slv[1]>                            135          1          -    Covered              
+#             bin <b[11],slv[1]>                            150          1          -    Covered              
+#             bin <b[10],slv[1]>                            138          1          -    Covered              
+#             bin <b[9],slv[1]>                             120          1          -    Covered              
+#             bin <b[8],slv[1]>                             108          1          -    Covered              
+#             bin <b[7],slv[1]>                              93          1          -    Covered              
+#             bin <b[6],slv[1]>                             135          1          -    Covered              
+#             bin <b[5],slv[1]>                             129          1          -    Covered              
+#             bin <b[4],slv[1]>                             135          1          -    Covered              
+#             bin <b[3],slv[1]>                             123          1          -    Covered              
+#             bin <b[2],slv[1]>                             117          1          -    Covered              
+#             bin <b[1],slv[1]>                             150          1          -    Covered              
+#             bin <b[0],slv[1]>                             456          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# 
+# Saving coverage database on exit...
+# End time: 09:36:10 on Jul 22,2026, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 131
+End time: 09:36:10 on Jul 22,2026, Elapsed time: 0:00:09
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   0
+    vopt: Errors:   0, Warnings:   1
+    vsim: Errors:   0, Warnings: 131
+  Totals: Errors:   0, Warnings: 132
